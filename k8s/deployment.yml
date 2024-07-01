@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatbot
+  labels:
+    app: pytorch
+
+spec:
+  selector:
+    matchLabels:
+      app: pytorch
+  
+  
+  template:
+    metadata:
+      labels:
+        app: pytorch
+    
+    spec:
+      containers:
+      - name: chatbot
+        stdin: true
+        tty: true
+        image: alpercetin/pytorch:latest
+        resources:
+          requests:
+            memory: "8Gi"
+            cpu: "1"
+          limits:
+            memory: "9Gi"
+            cpu: "2"
+        ports:
+        - containerPort: 5000

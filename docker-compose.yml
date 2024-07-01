@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  chatbot:
+    container_name: loadbalancer2
+    ports:
+      - "8001:8001"
+    stdin_open: true 
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      resources:
+            limits:
+              cpus: "2"
+              memory: 2GB
+            reservations:
+              cpus: "1"
+              memory: 1.5GB
